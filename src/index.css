@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-primary: #05080E;
+    --bg-secondary: #090F18;
+    --bg-panel: #0D1622;
+    --color-cyan: #00DFFF;
+    --color-blue: #008CFF;
+    --color-green: #19E68C;
+    --color-white: #F4F7FB;
+    --color-muted: #8293A5;
+    --color-border: rgba(120, 160, 190, 0.18);
+    --color-border-subtle: rgba(120, 160, 190, 0.08);
+    --color-border-highlight: rgba(0, 223, 255, 0.35);
+
+    --font-heading: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-interface: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-telemetry: 'JetBrains Mono', monospace;
+  }
+
+  body {
+    font-family: var(--font-interface);
+    background-color: var(--bg-primary);
+    color: var(--color-white);
+    letter-spacing: -0.011em;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    letter-spacing: -0.025em;
+  }
+
+  .font-mono, .telemetry-text {
+    font-family: var(--font-telemetry);
+    letter-spacing: -0.01em;
+  }
+}
+
+/* Premium Enterprise Panels (Linear / CrowdStrike Credibility) */
+.enterprise-panel {
+  background-color: var(--bg-panel);
+  border: 1px solid var(--color-border);
+  box-shadow: 0 16px 36px -12px rgba(0, 0, 0, 0.45);
+}
+
+.enterprise-panel-subtle {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--color-border-subtle);
+}
+
+.enterprise-panel-interactive {
+  background-color: var(--bg-panel);
+  border: 1px solid var(--color-border);
+  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.enterprise-panel-interactive:hover {
+  border-color: var(--color-border-highlight);
+  box-shadow: 0 18px 40px -10px rgba(0, 223, 255, 0.06);
+}
+
+/* Restrained Scanline Texture */
+.cyber-grid-bg {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(120, 160, 190, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(120, 160, 190, 0.035) 1px, transparent 1px);
+}
+
+/* Custom Sleek Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #05080E;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(120, 160, 190, 0.25);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 223, 255, 0.45);
+}
+
+/* Dot grid accent */
+.dot-grid {
+  background-image: radial-gradient(rgba(120, 160, 190, 0.15) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
