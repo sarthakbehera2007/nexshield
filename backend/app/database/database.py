@@ -37,6 +37,13 @@ async def get_db() -> AsyncGenerator[AsyncSession, None]:
 
 async def init_db() -> None:
     """Create all tables. Should be called at startup."""
+    # Ensure all models are imported so their tables exist in Base.metadata
+    from . import models as _core_models  # noqa: F401
+    try:
+        from ..defence import models as _defence_models  # noqa: F401
+        from ..honeypot import models as _honeypot_models  # noqa: F401
+    except Exception:
+        pass
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
 

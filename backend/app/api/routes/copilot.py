@@ -7,10 +7,10 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.ext.asyncio import AsyncSession
 import httpx
 
-from ..database.database import get_db
-from ..database.repository import IncidentRepository, EventRepository
-from ..schemas.responses import APIResponse, CopilotRequest, CopilotResponse
-from ..config import get_settings
+from ...database.database import get_db
+from ...database.repository import IncidentRepository, EventRepository
+from ...schemas.responses import APIResponse, CopilotRequest, CopilotResponse
+from ...config import get_settings
 
 router = APIRouter(prefix="/copilot", tags=["copilot"])
 

@@ -110,3 +110,21 @@ class WebSocketMessage(BaseModel):
     timestamp: datetime = Field(default_factory=datetime.utcnow)
     data: dict
 
+
+class MobileInspectRequest(BaseModel):
+    source_id: str
+    method: str
+    path: str
+    query: Optional[str] = None
+    body: Optional[str] = None
+    headers: Optional[dict] = None
+
+
+class MobileInspectResponse(BaseModel):
+    decision: str = "ALLOWED"
+    threat_type: Optional[str] = None
+    severity: Optional[str] = None
+    reason: Optional[str] = None
+    inspection_id: Optional[str] = None
+
+

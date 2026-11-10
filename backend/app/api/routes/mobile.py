@@ -5,16 +5,14 @@ from datetime import datetime
 from typing import List, Optional
 
 from fastapi import APIRouter, Depends, HTTPException, Request, status
-from fastapi_limiter import FastAPILimiter
-from fastapi_limiter.depends import RateLimiter
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from ..database.database import get_db
-from ..database.repository import EventRepository, SensorRepository, MobileDeviceRepository
-from ..schemas.responses import APIResponse, PaginatedResponse
-from ..schemas.events import MobileInspectRequest, MobileInspectResponse, SecurityEventCreate
-from ..schemas.incidents import IncidentSummary
-from ..services.logging_service import get_logger
+from ...database.database import get_db
+from ...database.repository import EventRepository, SensorRepository, MobileDeviceRepository
+from ...schemas.responses import APIResponse, PaginatedResponse
+from ...schemas.events import MobileInspectRequest, MobileInspectResponse, SecurityEventCreate
+from ...schemas.incidents import IncidentSummary
+from ...services.logging_service import get_logger
 
 router = APIRouter(prefix="/mobile", tags=["mobile"])
 
@@ -24,8 +22,7 @@ logger = get_logger("mobile")
 SQLI_PATTERN = re.compile(r"(SELECT|UNION|INSERT|UPDATE|DELETE).*FROM", re.IGNORECASE)
 XSS_PATTERN = re.compile(r"<script>.*?</script>", re.IGNORECASE)
 
-@router.post("/inspect", response_model=MobileInspectResponse, status_code=status.HTTP_200_OK,
-             dependencies=[Depends(RateLimiter(times=30, seconds=60))])
+@router.post("/inspect", response_model=MobileInspectResponse, status_code=status.HTTP_200_OK)
 async def inspect_request(payload: MobileInspectRequest, db: AsyncSession = Depends(get_db)):
     # Basic validation
     if not payload.method or not payload.path or not payload.source_id:

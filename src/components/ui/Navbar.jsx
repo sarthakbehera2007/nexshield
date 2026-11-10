@@ -9,7 +9,7 @@ const NAV_LINKS = [
   { label: 'Security', href: '#security' },
 ];
 
-export function Navbar({ onWatchDemo, onLaunchConsole, isThreatActive, isDefenseActive }) {
+export function Navbar({ onWatchDemo, onLaunchConsole, isThreatActive, isDefenseActive, activeView, onViewChange }) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const navRef = useRef();
@@ -66,12 +66,38 @@ export function Navbar({ onWatchDemo, onLaunchConsole, isThreatActive, isDefense
 
           {/* Desktop Nav Links */}
           <nav className="hidden lg:flex items-center gap-1 ml-4">
-            {NAV_LINKS.map(link => (
-              <a key={link.label} href={link.href}
-                className="px-3.5 py-2 text-sm text-[#8293A5] hover:text-white transition-colors rounded-lg hover:bg-white/5 font-medium">
-                {link.label}
-              </a>
-            ))}
+            <button
+              onClick={() => onViewChange && onViewChange('home')}
+              className={`px-3 py-1.5 text-xs font-mono font-bold rounded-lg transition ${
+                activeView === 'home' ? 'bg-[#00DFFF]/15 text-[#00DFFF] border border-[#00DFFF]/30' : 'text-[#8293A5] hover:text-white'
+              }`}
+            >
+              HOME
+            </button>
+            <button
+              onClick={() => onViewChange && onViewChange('soc')}
+              className={`px-3 py-1.5 text-xs font-mono font-bold rounded-lg transition ${
+                activeView === 'soc' ? 'bg-[#00DFFF]/15 text-[#00DFFF] border border-[#00DFFF]/30' : 'text-[#8293A5] hover:text-white'
+              }`}
+            >
+              LIVE SOC
+            </button>
+            <button
+              onClick={() => onViewChange && onViewChange('defence')}
+              className={`px-3 py-1.5 text-xs font-mono font-bold rounded-lg transition ${
+                activeView === 'defence' ? 'bg-[#00DFFF]/15 text-[#00DFFF] border border-[#00DFFF]/30' : 'text-[#8293A5] hover:text-white'
+              }`}
+            >
+              DEFENCE CENTER
+            </button>
+            <button
+              onClick={() => onViewChange && onViewChange('honeypot')}
+              className={`px-3 py-1.5 text-xs font-mono font-bold rounded-lg transition ${
+                activeView === 'honeypot' ? 'bg-[#19E68C]/15 text-[#19E68C] border border-[#19E68C]/30' : 'text-[#8293A5] hover:text-white'
+              }`}
+            >
+              HONEYPOT
+            </button>
           </nav>
 
           {/* Spacer */}

@@ -1,20 +1,27 @@
 from __future__ import annotations
 
 from typing import Any, Dict, List, Optional
-from sqlalchemy import select, update, func
-from ..models import MobileDevice, ReplaySession
 from datetime import datetime, timedelta
 
 from sqlalchemy import select, update, and_, func
 from sqlalchemy.exc import NoResultFound
 
-from ..database.database import get_db
-from ..database.models import SecurityEvent, Incident, DefenceAction, Sensor, EventStatus, IncidentStatus, DefenceActionStatus, SensorStatus, MobileDevice, ReplaySession
+from .database import get_db
+from .models import (
+    SecurityEvent,
+    Incident,
+    DefenceAction,
+    Sensor,
+    EventStatus,
+    IncidentStatus,
+    DefenceActionStatus,
+    SensorStatus,
+    MobileDevice,
+    ReplaySession,
+)
 
 # -------------------- Event Repository --------------------
 class EventRepository:
-    @staticmethod
-    ...
     @staticmethod
     async def create_event(session, event_data: Dict[str, Any]) -> SecurityEvent:
         event = SecurityEvent(**event_data)

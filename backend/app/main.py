@@ -22,6 +22,8 @@ from .api.routes.mobile import router as mobile_router
 from .api.routes.monitoring import router as monitoring_router
 from .api.routes.replay import router as replay_router
 from .api.routes.copilot import router as copilot_router
+from .api.routes.honeypot import router as honeypot_router
+from .honeypot.services import decoy_router
 from .api.websocket import manager as ws_manager
 
 # ---------------------------------------------------------------------------
@@ -61,6 +63,8 @@ def create_app() -> FastAPI:
     app.include_router(monitoring_router)
     app.include_router(replay_router)
     app.include_router(copilot_router)
+    app.include_router(honeypot_router)
+    app.include_router(decoy_router)
 
     # -----------------------------------------------------------------------
     # WebSocket endpoint – simple pass‑through to the ConnectionManager

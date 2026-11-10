@@ -8,7 +8,7 @@ from typing import List, Optional, Any
 from sqlalchemy import Column, String, DateTime, Enum, Float, Text, Integer, JSON, ForeignKey, Boolean
 from sqlalchemy.orm import relationship
 
-from ..database import Base
+from .database import Base
 
 # Enumerations
 class EventType(str, enum.Enum):

@@ -7,11 +7,11 @@ from typing import List, Optional
 from fastapi import APIRouter, Depends, HTTPException, Query, status
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from ..database.database import get_db
-from ..database.repository import IncidentRepository
-from ..schemas.incidents import IncidentCreate, IncidentResponse, IncidentSummary
-from ..schemas.responses import APIResponse, PaginatedResponse
-from ..api.websocket import manager, broadcast_incident_update
+from ...database.database import get_db
+from ...database.repository import IncidentRepository
+from ...schemas.incidents import IncidentCreate, IncidentResponse, IncidentSummary
+from ...schemas.responses import APIResponse, PaginatedResponse
+from ..websocket import manager, broadcast_incident_update
 
 router = APIRouter(prefix="/incidents", tags=["incidents"])
 

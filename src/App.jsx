@@ -15,6 +15,9 @@ import { FeatureBento } from './components/ui/FeatureBento';
 import { TrustSection } from './components/ui/TrustSection';
 import { FinalCTA } from './components/ui/FinalCTA';
 import { ConsoleModal } from './components/ui/ConsoleModal';
+import AdvancedSOCDashboard from './components/ui/AdvancedSOCDashboard';
+import DefenceCenter from './components/ui/DefenceCenter';
+import HoneypotCenter from './components/ui/HoneypotCenter';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -40,6 +43,7 @@ const SECTION_SCROLL_STATES = [
 ];
 
 export default function App() {
+  const [activeView, setActiveView] = useState('home'); // home | soc | defence | honeypot
   const [videoOpen, setVideoOpen] = useState(false);
   const [consoleOpen, setConsoleOpen] = useState(false);
   const [isThreatActive, setIsThreatActive] = useState(false);
@@ -102,9 +106,31 @@ export default function App() {
         onLaunchConsole={() => setConsoleOpen(true)}
         isThreatActive={isThreat}
         isDefenseActive={isDefend}
+        activeView={activeView}
+        onViewChange={setActiveView}
       />
 
-      {/* Page content */}
+      {/* Main Content Router */}
+      {activeView === 'soc' && (
+        <div className="relative z-20 pt-20">
+          <AdvancedSOCDashboard />
+        </div>
+      )}
+
+      {activeView === 'defence' && (
+        <div className="relative z-20 pt-20">
+          <DefenceCenter />
+        </div>
+      )}
+
+      {activeView === 'honeypot' && (
+        <div className="relative z-20 pt-20">
+          <HoneypotCenter />
+        </div>
+      )}
+
+      {activeView === 'home' && (
+      /* Page content */
       <div ref={scrollContainerRef} className="relative z-10">
         {/* SECTION 1: HERO */}
         <section className="scroll-section min-h-screen flex items-center px-5 md:px-12 lg:px-20 pt-20 lg:pt-0">
@@ -196,6 +222,7 @@ export default function App() {
           </div>
         </footer>
       </div>
+      )}
 
       {/* Modals */}
       <VideoModal isOpen={videoOpen} onClose={() => setVideoOpen(false)} />

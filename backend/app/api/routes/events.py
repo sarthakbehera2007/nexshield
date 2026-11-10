@@ -7,10 +7,10 @@ from fastapi import APIRouter, Depends, HTTPException, Query, status
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from ...database.database import get_db
-from ..database.repository import EventRepository
-from ..schemas.events import SecurityEventCreate, SecurityEventResponse, SecurityEventFilter, WebSocketMessage
-from ..schemas.responses import APIResponse, PaginatedResponse
-from ..api.websocket import manager, broadcast_event
+from ...database.repository import EventRepository
+from ...schemas.events import SecurityEventCreate, SecurityEventResponse, SecurityEventFilter, WebSocketMessage
+from ...schemas.responses import APIResponse, PaginatedResponse
+from ..websocket import manager, broadcast_event
 
 router = APIRouter(prefix="/events", tags=["events"])
 
