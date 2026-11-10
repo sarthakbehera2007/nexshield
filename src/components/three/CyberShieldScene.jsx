@@ -83,7 +83,7 @@ function ShieldRig({ scrollState, parallaxState, isThreatDetected, isInvestigati
   );
 }
 
-export function CyberShieldScene({ scrollState, currentSection = 0 }) {
+export function CyberShieldScene({ scrollState, currentSection = 0, isThreat = false, isDefend = false }) {
   const [isMobile, setIsMobile] = useState(false);
   const [parallaxState, setParallaxState] = useState({ x: 0, y: 0 });
   const lightsRef = useRef();
@@ -111,9 +111,9 @@ export function CyberShieldScene({ scrollState, currentSection = 0 }) {
     return () => { cancelAnimationFrame(raf); cleanup(); };
   }, [isMobile]);
 
-  const isThreatDetected = currentSection === 2 || currentSection === 3;
+  const isThreatDetected = isThreat || currentSection === 2 || currentSection === 3;
   const isInvestigationActive = currentSection === 3;
-  const isDefending = currentSection === 4 || currentSection === 5;
+  const isDefending = isDefend || currentSection === 4 || currentSection === 5;
 
   return (
     <div className="w-full h-full">

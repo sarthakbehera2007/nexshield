@@ -20,6 +20,7 @@ import DefenceCenter from './components/ui/DefenceCenter';
 import HoneypotCenter from './components/ui/HoneypotCenter';
 import MobileGatewayCenter from './components/ui/MobileGatewayCenter';
 import MobileApp from './mobile/MobileApp';
+import { AttackSimulatorHUD } from './components/ui/AttackSimulatorHUD';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -60,8 +61,29 @@ export default function App() {
   const [consoleOpen, setConsoleOpen] = useState(false);
   const [isThreatActive, setIsThreatActive] = useState(false);
   const [isDefenseActive, setIsDefenseActive] = useState(false);
+  const [activeAlert, setActiveAlert] = useState(null);
   const [currentSection, setCurrentSection] = useState(0);
   const [scrollState, setScrollState] = useState(DEFAULT_SCROLL_STATE);
+
+  const handleTriggerAttack = (scenario) => {
+    setActiveAlert(scenario);
+    setIsThreatActive(true);
+    setIsDefenseActive(false);
+  };
+
+  const handleResolveThreat = (threat) => {
+    if (threat) {
+      setIsThreatActive(false);
+      setIsDefenseActive(true);
+      setTimeout(() => {
+        setActiveAlert(null);
+        setIsDefenseActive(false);
+      }, 7000);
+    } else {
+      setActiveAlert(null);
+      setIsThreatActive(false);
+    }
+  };
 
   const scrollContainerRef = useRef(null);
   const heroSceneRef = useRef(null);
@@ -109,6 +131,8 @@ export default function App() {
             shieldPosX: currentSection === 0 ? scrollState.shieldPosX : scrollState.shieldPosX,
           }}
           currentSection={currentSection}
+          isThreat={isThreat}
+          isDefend={isDefend}
         />
       </div>
 
@@ -247,6 +271,13 @@ export default function App() {
         </footer>
       </div>
       )}
+
+      {/* Attack Simulation & Alert Show Mechanism HUD */}
+      <AttackSimulatorHUD
+        activeAlert={activeAlert}
+        onTriggerAttack={handleTriggerAttack}
+        onResolveThreat={handleResolveThreat}
+      />
 
       {/* Modals */}
       <VideoModal isOpen={videoOpen} onClose={() => setVideoOpen(false)} />
