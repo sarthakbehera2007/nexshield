@@ -23,8 +23,14 @@ class Settings(BaseSettings):
     PORT_SCAN_THRESHOLD: int = 15
     SCAN_WINDOW_SECONDS: int = 60
     OLLAMA_URL: str = "http://localhost:11434"
-    OLLAMA_MODEL: str = "llama3.2"
-    OLLAMA_ENABLED: bool = False
+    OLLAMA_MODEL: str = "gemma4:latest"
+    OLLAMA_ENABLED: bool = True
+    AI_PROVIDER: str = "gemma"
+    GEMMA_MODEL: str = "gemma4:latest"
+    GEMMA_API_BASE: str = "http://localhost:11434"
+    GEMMA_ENABLED: bool = True
+    GEMMA_TEMPERATURE: float = 0.1
+    OLLAMA_TIMEOUT: int = 60
     JWT_SECRET: str = "change-this-secret"
     PROTECTED_IPS: List[str] = ["127.0.0.1", "::1"]
     MAX_REQUEST_SIZE: int = 1_048_576  # 1 MiB

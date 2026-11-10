@@ -264,9 +264,14 @@ export default function App() {
                 <path d="M8.5 8.5V15.5M8.5 8.5L15.5 15.5M15.5 8.5V15.5" stroke="#00DFFF" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
               <span className="text-[#F4F7FB] font-semibold">NEXSHIELD</span>
-              <span>· Intelligent Cyber Defence · v5.0</span>
+              <span>· Intelligent Cyber Defence · Powered by Google Gemma 4</span>
             </div>
-            <div>Built with Three.js, R3F, GSAP &amp; React</div>
+            <div className="flex items-center gap-2">
+              <span className="px-2 py-0.5 rounded bg-[#00D4FF]/10 text-[#00D4FF] border border-[#00D4FF]/30 font-bold">
+                TEAM EXPLOITX
+              </span>
+              <span>Lead: Sarthak Kumar Behera · Aditya Narayana Gajendra · Ompratik Mohanty</span>
+            </div>
           </div>
         </footer>
       </div>

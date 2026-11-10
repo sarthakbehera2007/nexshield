@@ -1,6 +1,14 @@
 import { apiClient } from './api';
 
 export const copilotService = {
+  chat: async (message, incidentId = null) => {
+    const res = await apiClient.post('/copilot/chat', {
+      message,
+      incident_id: incidentId,
+    });
+    return res.data;
+  },
+
   analyzeIncident: async (incidentId, query) => {
     const res = await apiClient.post('/copilot/chat', {
       incident_id: incidentId,
@@ -14,4 +22,3 @@ export const copilotService = {
     return res.data;
   },
 };
-

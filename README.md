@@ -1,7 +1,23 @@
 # NEXSHIELD — AI-Assisted Intelligent Cyber Defence Platform
 **DETECT. UNDERSTAND. DEFEND.**
 
-NEXSHIELD is a multi-tier cyber defence architecture built for enterprise-grade SOC threat detection, attack correlation, explainable AI guidance, digital honeypot lures, and operator-controlled containment.
+[![MLH Hackathon Project](https://img.shields.io/badge/MLH-Hackathon%20Project-FF0055?style=for-the-badge&logo=majorleaguehacking&logoColor=white)](https://mlh.io)
+[![Google Gemma 4 Powered](https://img.shields.io/badge/Powered%20By-Google%20Gemma%204-4285F4?style=for-the-badge&logo=google&logoColor=white)](https://ai.google.dev/gemma)
+[![Team ExploitX](https://img.shields.io/badge/Team-ExploitX-00D4FF?style=for-the-badge)](https://github.com/sarthakbehera2007/nexshield)
+
+NEXSHIELD is a distributed, multi-tier cyber defence architecture built for enterprise-grade SOC threat detection, attack correlation, **Google Gemma 4** explainable AI guidance, digital honeypot lures, and human-in-the-loop reversible containment.
+
+Detailed MLH submission write-up: [`PROJECT_SUBMISSION.md`](PROJECT_SUBMISSION.md).
+
+---
+
+## 👥 Team ExploitX
+
+- **Lead**: Sarthak Kumar Behera (Architecture, Central FastAPI Backend, Defence Engine & Integration)
+- **Team Member**: Aditya Narayana Gajendra (Cyber Threat Intelligence, Digital Honeypots & Kali Linux Red Teaming)
+- **Team Member**: Ompratik Mohanty (Frontend Engineering, Three.js 3D Hardware Visualization, Android Gateway PWA)
+
+**GitHub Repository**: [https://github.com/sarthakbehera2007/nexshield](https://github.com/sarthakbehera2007/nexshield)
 
 ---
 
@@ -10,11 +26,13 @@ NEXSHIELD is a multi-tier cyber defence architecture built for enterprise-grade 
 ```
 +-----------------------------------------------------------------------------------+
 |                            WINDOWS OPERATOR WORKSTATION                          |
-|  - React 19 + Three.js / React Three Fiber + Tailwind CSS                         |
-|  - Real-Time WebSocket Telemetry Feed                                             |
+|  - React 19 + Three.js / React Three Fiber + GSAP + Tailwind CSS                 |
+|  - Real-Time WebSocket Telemetry Feed & 3D Threat Reactivity                      |
 |  - Live SOC Dashboard (Analytical charts, threat progression)                    |
+|  - Red Team Attack Simulation HUD & Audio Sirens                                  |
 |  - Defence Center (Operator approvals, dry-run & reversible containment)         |
 |  - Honeypot Center (Decoy interaction analytics & attacker sessions)             |
+|  - Mobile Gateway Center (Device fleet telemetry & credential revocation)         |
 +-----------------------------------------------------------------------------------+
                                          | REST & WebSocket
                                          v
@@ -25,7 +43,7 @@ NEXSHIELD is a multi-tier cyber defence architecture built for enterprise-grade 
 |  - Attack Story & Risk Scoring Engine (Deterministic 0-100 risk calculation)      |
 |  - Intelligent Defence Engine (Policy evaluation, human-in-the-loop approvals)    |
 |  - Digital Honeypot Subsystem (5 decoy services, session & heuristic analysis)    |
-|  - AI Security Copilot (Grounded incident explanations via Ollama)                |
+|  - AI Security Copilot (Powered by Google Gemma 4 with zero-downtime fallback)    |
 |  - Persistent SQLite Database (Audit trail, incidents, sessions)                 |
 +-----------------------------------------------------------------------------------+
         ^                                                    ^
@@ -41,7 +59,14 @@ NEXSHIELD is a multi-tier cyber defence architecture built for enterprise-grade 
 
 ## Key Subsystems
 
-### 1. Intelligent Defence Engine (`app/defence/`)
+### 1. Google Gemma 4 AI Security Copilot (`app/ai/gemma_copilot.py`)
+- **Model**: Powered by Google DeepMind's **Gemma 4** open-weights architecture.
+- **Explainable Triage**: Translates raw security payloads into plain-language incident explanations.
+- **MITRE ATT&CK Attribution**: Real-time automated mapping (`T1190`, `T1110`, `T1083`, `T1200`).
+- **Zero-Downtime Fallback**: Features an embedded deterministic cybersecurity expert engine when offline.
+- **Human-in-the-Loop Guardrails**: Gemma recommends containment actions with confidence scores, but never executes modifications without operator approval.
+
+### 2. Intelligent Defence Engine (`app/defence/`)
 - **Safety Modes**:
   - `OBSERVE`: Report and propose actions without automated host modification.
   - `APPROVAL_REQUIRED`: Human operator must inspect and explicitly confirm proposed containment.
@@ -50,7 +75,7 @@ NEXSHIELD is a multi-tier cyber defence architecture built for enterprise-grade 
 - **Fail-Safe Allowlist**: Protected targets (management workstation, DNS, backend gateway) can never be blocked.
 - **Audit Log**: Immutable audit record for all state transitions (PROPOSED -> APPROVED -> EXECUTED -> ROLLED_BACK).
 
-### 2. Digital Decoy Honeypot (`app/honeypot/`)
+### 3. Digital Decoy Honeypot (`app/honeypot/`)
 - **5 Decoy Services**:
   - `/decoys/portal`: Corporate intranet landing decoy.
   - `/decoys/admin/login`: Brute-force lure capturing credential stuffing.
@@ -60,17 +85,16 @@ NEXSHIELD is a multi-tier cyber defence architecture built for enterprise-grade 
 - **Behavior Classifier**: Heuristic signature engine classifying SQLi, XSS, Path Traversal, and Scanners (nmap, nikto, sqlmap).
 - **Attacker Session Tracking**: Tracks session lifecycle, service traversal, and telemetry feeds into the main security event pipeline.
 
-### 3. Advanced SOC Dashboard
-- **Telemetry Ingestion**: WebSocket live feed with auto-reconnection and heartbeat.
+### 4. Advanced SOC Dashboard & 3D Hardware Visualizer
+- **3D Titanium-Graphite Shield**: Three.js hardware assembly reacting physically to breaches (crimson red alarm glow $\rightarrow$ emerald green containment).
+- **Attack Simulator HUD**: Built-in browser control bar triggering live attacks with audio sirens and instant containment buttons.
 - **Analytical Charts**: Recharts-powered threat timelines and severity distribution.
-- **Operator Navigation**: Quick toggle between Brand Showcase, Live SOC, Defence Center, and Honeypot Center.
 
-### 4. Android Mobile Security Gateway (`app/gateway/` & `src/mobile/`)
+### 5. Android Mobile Security Gateway (`app/gateway/` & `src/mobile/`)
 - **PWA Experience**: Android-first responsive interface with manifest, service worker support, and offline event caching.
 - **Cryptographic Registration**: Random token generation with SHA-256 hashed backend verification.
 - **Emergency SOS**: Immediate CRITICAL priority event generation with optional GPS telemetry.
 - **Edge URL Inspector**: Client-side & backend heuristic analysis against phishing, abusive TLDs, and IP hosts.
-- **Fleet Management**: SOC console view for tracking active heartbeats and one-click credential revocation.
 - Detailed documentation: [`MOBILE_GATEWAY.md`](MOBILE_GATEWAY.md).
 
 ---
@@ -84,15 +108,16 @@ python -m uvicorn app.main:app --host 0.0.0.0 --port 8000
 ```
 - Swagger UI Documentation: `http://localhost:8000/docs`
 - Health Check: `http://localhost:8000/health`
+- Gemma Copilot Status: `http://localhost:8000/copilot/status`
 - Run Backend Tests:
   ```bash
-  python -m pytest tests/test_phase6.py -v
+  python -m pytest tests -v
   ```
 
 ### Frontend (Windows Dashboard)
 ```bash
 npm install
-npm run dev
+npm run dev -- --host
 ```
 Open `http://localhost:5173` to access the SOC interface.
 
@@ -111,6 +136,10 @@ Open `http://localhost:5173` to access the SOC interface.
 | Decoy Telemetry & Session Ingestion | `tests/test_phase6.py::test_honeypot_decoy_interactions_and_telemetry` | PASS |
 | Mobile Gateway Status & Device Fleet | `tests/test_phase9.py::test_mobile_gateway_status` | PASS |
 | Device Registration & Heartbeats | `tests/test_phase9.py::test_mobile_device_registration_and_auth` | PASS |
+| Mobile Key Rejection Enforcement | `tests/test_phase9.py::test_mobile_invalid_key_rejected` | PASS |
 | Mobile Auth & Revocation Enforcement | `tests/test_phase9.py::test_mobile_device_revocation_enforced` | PASS |
 | Gateway Heuristic URL Inspection | `tests/test_phase9.py::test_mobile_url_inspector_heuristics` | PASS |
-| Frontend Production Build | `npm run build` | PASS |
+| Google Gemma 4 Copilot Status | `tests/test_gemma.py::test_gemma_copilot_status` | PASS |
+| Gemma 4 Interactive Threat Chat | `tests/test_gemma.py::test_gemma_copilot_chat` | PASS |
+| Gemma Request Validation | `tests/test_gemma.py::test_gemma_copilot_chat_empty_validation` | PASS |
+| Frontend Production Build | `npm run build` | PASS (1.12s) |
