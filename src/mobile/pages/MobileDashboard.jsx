@@ -229,3 +229,4 @@ export default function MobileDashboard({ device, onNavigate, isOnline }) {
     </div>
   );
 }
+

@@ -187,3 +187,4 @@ export default function SecurityCenter({ device, isOnline }) {
     </div>
   );
 }
+

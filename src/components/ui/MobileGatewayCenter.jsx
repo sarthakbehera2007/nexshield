@@ -153,21 +153,21 @@ export default function MobileGatewayCenter({ onLaunchMobileView }) {
           <div className="p-4 bg-[#0D121C] border border-[#162132] rounded-xl flex flex-col justify-between">
             <span className="text-[10px] font-mono uppercase tracking-wider text-[#8995A7]">Registered Devices</span>
             <div className="mt-2 text-2xl font-bold font-mono text-[#00D4FF]">
-              {status?.registered_devices ?? devices.length}
+              {status?.active_devices_count ?? status?.registered_devices ?? devices.length}
             </div>
           </div>
 
           <div className="p-4 bg-[#0D121C] border border-[#162132] rounded-xl flex flex-col justify-between">
             <span className="text-[10px] font-mono uppercase tracking-wider text-[#8995A7]">Active Heartbeats</span>
             <div className="mt-2 text-2xl font-bold font-mono text-[#19E68C]">
-              {status?.active_devices ?? devices.filter(d => d.credential_status === 'ACTIVE').length}
+              {status?.online_devices_count ?? status?.active_devices ?? devices.filter(d => d.credential_status === 'ACTIVE').length}
             </div>
           </div>
 
           <div className="p-4 bg-[#0D121C] border border-[#162132] rounded-xl flex flex-col justify-between">
             <span className="text-[10px] font-mono uppercase tracking-wider text-[#8995A7]">Mobile Events</span>
             <div className="mt-2 text-2xl font-bold font-mono text-[#FFB547]">
-              {status?.total_reports ?? 0}
+              {status?.total_events_reported ?? status?.total_reports ?? 0}
             </div>
           </div>
 
@@ -326,3 +326,4 @@ export default function MobileGatewayCenter({ onLaunchMobileView }) {
     </div>
   );
 }
+

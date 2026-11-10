@@ -109,3 +109,4 @@ export default function DeviceRegistration({ onRegistered }) {
     </div>
   );
 }
+

@@ -131,3 +131,4 @@ export default function MobileApp({ onExitToDesktop }) {
     </div>
   );
 }
+

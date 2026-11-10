@@ -207,3 +207,4 @@ export default function SOSPage({ device, isOnline }) {
     </div>
   );
 }
+

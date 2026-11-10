@@ -145,3 +145,4 @@ export default function SettingsPage({ device, onDeregister, isOnline }) {
     </div>
   );
 }
+
