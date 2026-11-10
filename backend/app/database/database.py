@@ -42,6 +42,7 @@ async def init_db() -> None:
     try:
         from ..defence import models as _defence_models  # noqa: F401
         from ..honeypot import models as _honeypot_models  # noqa: F401
+        from ..gateway import models as _gateway_models  # noqa: F401
     except Exception:
         pass
     async with engine.begin() as conn:

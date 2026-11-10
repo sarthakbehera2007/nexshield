@@ -18,6 +18,8 @@ import { ConsoleModal } from './components/ui/ConsoleModal';
 import AdvancedSOCDashboard from './components/ui/AdvancedSOCDashboard';
 import DefenceCenter from './components/ui/DefenceCenter';
 import HoneypotCenter from './components/ui/HoneypotCenter';
+import MobileGatewayCenter from './components/ui/MobileGatewayCenter';
+import MobileApp from './mobile/MobileApp';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -43,7 +45,17 @@ const SECTION_SCROLL_STATES = [
 ];
 
 export default function App() {
-  const [activeView, setActiveView] = useState('home'); // home | soc | defence | honeypot
+  const [activeView, setActiveView] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const param = new URLSearchParams(window.location.search).get('view');
+      if (param === 'mobile') return 'mobile-app';
+      if (param === 'gateway') return 'mobile-gateway';
+      if (param === 'soc') return 'soc';
+      if (param === 'defence') return 'defence';
+      if (param === 'honeypot') return 'honeypot';
+    }
+    return 'home';
+  });
   const [videoOpen, setVideoOpen] = useState(false);
   const [consoleOpen, setConsoleOpen] = useState(false);
   const [isThreatActive, setIsThreatActive] = useState(false);
@@ -126,6 +138,18 @@ export default function App() {
       {activeView === 'honeypot' && (
         <div className="relative z-20 pt-20">
           <HoneypotCenter />
+        </div>
+      )}
+
+      {activeView === 'mobile-gateway' && (
+        <div className="relative z-20 pt-20">
+          <MobileGatewayCenter onLaunchMobileView={() => setActiveView('mobile-app')} />
+        </div>
+      )}
+
+      {activeView === 'mobile-app' && (
+        <div className="relative z-20 pt-16 min-h-screen bg-[#05080E] flex flex-col items-center">
+          <MobileApp onExitToDesktop={() => setActiveView('home')} />
         </div>
       )}
 

@@ -98,6 +98,22 @@ export function Navbar({ onWatchDemo, onLaunchConsole, isThreatActive, isDefense
             >
               HONEYPOT
             </button>
+            <button
+              onClick={() => onViewChange && onViewChange('mobile-gateway')}
+              className={`px-3 py-1.5 text-xs font-mono font-bold rounded-lg transition ${
+                activeView === 'mobile-gateway' ? 'bg-[#00D4FF]/15 text-[#00D4FF] border border-[#00D4FF]/30' : 'text-[#8293A5] hover:text-white'
+              }`}
+            >
+              MOBILE GATEWAY
+            </button>
+            <button
+              onClick={() => onViewChange && onViewChange('mobile-app')}
+              className={`px-3 py-1.5 text-xs font-mono font-bold rounded-lg transition ${
+                activeView === 'mobile-app' ? 'bg-[#FFB547]/15 text-[#FFB547] border border-[#FFB547]/30' : 'text-[#8293A5] hover:text-white'
+              }`}
+            >
+              MOBILE APP
+            </button>
           </nav>
 
           {/* Spacer */}
@@ -135,11 +151,49 @@ export function Navbar({ onWatchDemo, onLaunchConsole, isThreatActive, isDefense
       {/* Mobile full-screen nav */}
       {mobileOpen && (
         <div ref={mobileMenuRef}
-          className="fixed inset-0 z-40 bg-[#05080E]/98 backdrop-blur-xl pt-20 px-6 flex flex-col gap-2 lg:hidden">
+          className="fixed inset-0 z-40 bg-[#05080E]/98 backdrop-blur-xl pt-20 px-6 flex flex-col gap-2 lg:hidden overflow-y-auto">
+          <div className="flex flex-col gap-1 pb-4 border-b border-[rgba(120,160,190,0.1)]">
+            <button
+              onClick={() => { onViewChange && onViewChange('home'); setMobileOpen(false); }}
+              className="text-left font-mono font-bold text-white py-2"
+            >
+              HOME
+            </button>
+            <button
+              onClick={() => { onViewChange && onViewChange('soc'); setMobileOpen(false); }}
+              className="text-left font-mono font-bold text-[#00DFFF] py-2"
+            >
+              LIVE SOC DASHBOARD
+            </button>
+            <button
+              onClick={() => { onViewChange && onViewChange('defence'); setMobileOpen(false); }}
+              className="text-left font-mono font-bold text-[#00DFFF] py-2"
+            >
+              DEFENCE CENTER
+            </button>
+            <button
+              onClick={() => { onViewChange && onViewChange('honeypot'); setMobileOpen(false); }}
+              className="text-left font-mono font-bold text-[#19E68C] py-2"
+            >
+              HONEYPOT CENTER
+            </button>
+            <button
+              onClick={() => { onViewChange && onViewChange('mobile-gateway'); setMobileOpen(false); }}
+              className="text-left font-mono font-bold text-[#00D4FF] py-2"
+            >
+              MOBILE GATEWAY
+            </button>
+            <button
+              onClick={() => { onViewChange && onViewChange('mobile-app'); setMobileOpen(false); }}
+              className="text-left font-mono font-bold text-[#FFB547] py-2"
+            >
+              MOBILE APP (PWA)
+            </button>
+          </div>
           {NAV_LINKS.map(link => (
             <a key={link.label} href={link.href}
               onClick={() => setMobileOpen(false)}
-              className="text-xl font-heading font-bold text-[#8293A5] hover:text-white py-4 border-b border-[rgba(120,160,190,0.1)] transition-colors">
+              className="text-lg font-heading font-medium text-[#8293A5] hover:text-white py-2 transition-colors">
               {link.label}
             </a>
           ))}
